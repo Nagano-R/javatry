@@ -29,6 +29,7 @@ public class TicketBooth {
     private static final int MAX_QUANTITY = 10;
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
     private static final int TWO_DAY_PRICE = 13200;
+    private static final int FOUR_DAY_PRICE = 22400;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -111,6 +112,11 @@ public class TicketBooth {
          * */
     }
 
+    public TicketBuyResult buyFourDayPassport(int handedMoney) {
+        MultiDayTicket ticket = doBuyMultiDayPassport(4, FOUR_DAY_PRICE, handedMoney, TimeType.NORMAL);
+        return new TicketBuyResult(ticket, handedMoney - FOUR_DAY_PRICE);
+    }
+
     //    private Ticket doBuyPassport(int days, int price, int handedMoney) {
     //        return doBuyPassport(days, price, handedMoney, null);
     //        //
@@ -121,6 +127,9 @@ public class TicketBooth {
     //        //        return new Ticket(days, price);
     //    }
 
+    /*
+     * チケット製造メソッド（MultiDay）
+     * */
     private MultiDayTicket doBuyMultiDayPassport(int days, int price, int handedMoney, TimeType type) {
         assertQuantityExists(days);
         assertFeeExists(price, handedMoney);

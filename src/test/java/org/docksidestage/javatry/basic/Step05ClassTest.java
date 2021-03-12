@@ -311,6 +311,17 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_wonder() {
         // your confirmation code here
+        TicketBooth booth = new TicketBooth(); //売り場建設
+        TicketBuyResult fourdayTicketResult = booth.buyFourDayPassport(22500); //4日チケットを買う
+        MultiDayTicket fourday = fourdayTicketResult.getTicket(); //チケット本体
+        int Oturi = fourdayTicketResult.getChange(); //おつり
+        System.out.println(fourday.getDisplayPrice()); //チケットの金額
+        System.out.println(Oturi);
+        fourday.doInPark();
+        fourday.doInPark();
+        fourday.doInPark();
+        fourday.doInPark();
+        //fourday.doInPark(); //エラー
     }
 
     /**
