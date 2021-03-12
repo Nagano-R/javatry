@@ -20,7 +20,7 @@ package org.docksidestage.bizfw.basic.buyticket;
  * @author Ren
  */
 
-// TODO nagano [tips] なんとかInterfaceという名前のInterfaceを作る人はあまりいない (まあ暫定) by jflute (2020/10/16)
+// done nagano [tips] なんとかInterfaceという名前のInterfaceを作る人はあまりいない (まあ暫定) by jflute (2020/10/16)
 /*
  * インターフェースとは・・・
  * インタフェースでは定数とメソッドのみが定義できる。
@@ -58,7 +58,7 @@ public interface Ticket {
     public TimeType getTimeType();
 
     public enum TimeType {
-        NORMAL("通常版"), SHORT("短縮版");
+        NORMAL("通常版"), SHORT("短縮版"), NIGHT("夜間限定");
 
         private final String label;
 

@@ -1,10 +1,14 @@
 package org.docksidestage.bizfw.basic.buyticket;
 
+/**
+ * @author nagano
+ */
 public class OneDayTicket implements Ticket {
 
     private final int displayPrice;
+    private final TimeType timetype;
+
     private boolean alreadyIn = false;
-    private TimeType timetype;
 
     public OneDayTicket(int displayPrice, TimeType timetype) {
         this.displayPrice = displayPrice;
@@ -28,13 +32,11 @@ public class OneDayTicket implements Ticket {
 
     @Override
     public int getDays() {
-        // TODO 自動生成されたメソッド・スタブ
         return 1;
     }
 
     @Override
     public TimeType getTimeType() {
-        // TODO 自動生成されたメソッド・スタブ
         return timetype;
     }
 

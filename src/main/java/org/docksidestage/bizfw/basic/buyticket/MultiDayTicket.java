@@ -5,11 +5,11 @@ package org.docksidestage.bizfw.basic.buyticket;
  */
 public class MultiDayTicket implements Ticket {
 
-    //コメント整理は後ほど（10/16）
+    //TODO コメント整理は後ほど（10/16）
     private final int displayPrice; //額面
     private final int days; //使用可能日数
+    private final TimeType timetype; //時間帯
     private int useCount = 0; //使用回数
-    private TimeType timetype; //時間帯
 
     public MultiDayTicket(int days, int displayPrice, TimeType timetype) {
         this.days = days;
@@ -19,6 +19,7 @@ public class MultiDayTicket implements Ticket {
 
     public void doInPark() {
         if (this.isAlreadyIn()) {
+            // 以前の実装のバックアップ
             //throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
             throw new IllegalStateException("This ticket does not allow you to enter the park anymore.");
         }
@@ -30,7 +31,7 @@ public class MultiDayTicket implements Ticket {
     }
 
     public boolean isAlreadyIn() {
-        return days <= useCount ? true : false;
+        return days <= useCount;
     }
 
     public int getDays() {

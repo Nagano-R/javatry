@@ -30,6 +30,7 @@ public class TicketBooth {
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
     private static final int TWO_DAY_PRICE = 13200;
     private static final int FOUR_DAY_PRICE = 22400;
+    private static final int TWO_DAY_NIGHT_PRICE = 7400;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -115,6 +116,11 @@ public class TicketBooth {
     public TicketBuyResult buyFourDayPassport(int handedMoney) {
         MultiDayTicket ticket = doBuyMultiDayPassport(4, FOUR_DAY_PRICE, handedMoney, TimeType.NORMAL);
         return new TicketBuyResult(ticket, handedMoney - FOUR_DAY_PRICE);
+    }
+
+    public TicketBuyResult buyNightOnlyTwoDayPassport(int handedMoney) {
+        MultiDayTicket ticket = doBuyMultiDayPassport(2, TWO_DAY_NIGHT_PRICE, handedMoney, TimeType.NIGHT);
+        return new TicketBuyResult(ticket, handedMoney - TWO_DAY_NIGHT_PRICE);
     }
 
     //    private Ticket doBuyPassport(int days, int price, int handedMoney) {

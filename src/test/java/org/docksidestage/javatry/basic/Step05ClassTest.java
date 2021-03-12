@@ -132,7 +132,7 @@ public class Step05ClassTest extends PlainTestCase {
         // comment out after making the method
         TicketBooth booth = new TicketBooth();
         int money = 14000;
-        int change = booth.buyTwoDayPassport(money);
+        int change = booth.buyTwoDayPassport(money).getChange();
         Integer sea = booth.getSalesProceeds() + change;
         log(sea); // should be same as money
 
@@ -221,7 +221,7 @@ public class Step05ClassTest extends PlainTestCase {
         //switch文を使わずに書いた場合
         System.out.println("チケットは" + ticket.getDays() + "日分で、" + ticket.getTimeType().getLabel() + "です");
 
-        // TODO Ren TimeType等の変数をenumで扱ってみる (2021/01/15)
+        // done Ren TimeType等の変数をenumで扱ってみる (2021/01/15)
 
         /*
          * Ticketは日数(days)×時間帯(timetype)×入場範囲？(areatype)の分だけ種類を持てる
@@ -315,8 +315,9 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBuyResult fourdayTicketResult = booth.buyFourDayPassport(22500); //4日チケットを買う
         MultiDayTicket fourday = fourdayTicketResult.getTicket(); //チケット本体
         int Oturi = fourdayTicketResult.getChange(); //おつり
-        System.out.println(fourday.getDisplayPrice()); //チケットの金額
-        System.out.println(Oturi);
+        System.out.println("チケットの値段 :" + fourday.getDisplayPrice()); //チケットの金額
+        System.out.println("おつり :" + Oturi);
+        System.out.println("チケットの種類 :" + fourday.getTimeType());
         fourday.doInPark();
         fourday.doInPark();
         fourday.doInPark();
@@ -330,6 +331,16 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_wonder_night() {
         // your confirmation code here
+        TicketBooth booth = new TicketBooth(); //売り場建設
+        TicketBuyResult nightTwodayTicketResult = booth.buyNightOnlyTwoDayPassport(1000000); //2日(夜間)チケットを買う
+        MultiDayTicket nightTwoday = nightTwodayTicketResult.getTicket(); //チケット本体
+        int oturi = nightTwodayTicketResult.getChange(); //おつり
+        System.out.println("チケットの値段 :" + nightTwoday.getDisplayPrice()); //チケットの金額
+        System.out.println("おつり :" + oturi);
+        System.out.println("チケットの種類 :" + nightTwoday.getTimeType());
+        nightTwoday.doInPark();
+        nightTwoday.doInPark();
+        // nightTwoday.doInPark(); //エラー
     }
 
     /**
