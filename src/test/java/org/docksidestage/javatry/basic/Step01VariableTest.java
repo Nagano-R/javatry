@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import org.docksidestage.unit.PlainTestCase;
  * Operate exercise as javadoc. If it's question style, write your answer before test execution. <br>
  * (javadocの通りにエクササイズを実施。質問形式の場合はテストを実行する前に考えて答えを書いてみましょう)
  * @author jflute
- * @author your_name_here
+ * @author nagano
  */
 public class Step01VariableTest extends PlainTestCase {
 
@@ -35,7 +35,7 @@ public class Step01VariableTest extends PlainTestCase {
      * What string is sea variable at the method end? <br>
      * (メソッド終了時の変数 sea の中身は？)
      */
-    public void test_variable_basic() { // example, so begin from the next method
+    public void test_variable_basic() {
         String sea = "mystic";
         log(sea); // your answer? => mystic
     }
@@ -47,7 +47,8 @@ public class Step01VariableTest extends PlainTestCase {
         String piari = null;
         String dstore = "mai";
         sea = sea + land + piari + ":" + dstore;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => mystic8:mai (x) => mystic8null:mai
+        // foo
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -56,7 +57,7 @@ public class Step01VariableTest extends PlainTestCase {
         String land = "oneman";
         sea = land;
         land = land + "'s dreams";
-        log(sea); // your answer? => 
+        log(sea); // your answer? => oneman
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -65,7 +66,7 @@ public class Step01VariableTest extends PlainTestCase {
         int land = 415;
         sea = land;
         land++;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 415
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -75,7 +76,7 @@ public class Step01VariableTest extends PlainTestCase {
         sea = land;
         sea = land.add(new BigDecimal(1));
         sea.add(new BigDecimal(1));
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 417 (x) => 416
     }
 
     // ===================================================================================
@@ -89,19 +90,19 @@ public class Step01VariableTest extends PlainTestCase {
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_String() {
         String sea = instanceBroadway;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => instanceBroadway (x) => null 文字列じゃなかった…
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_int() {
         int sea = instanceDockside;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => null (x) => 0
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_Integer() {
         Integer sea = instanceHangar;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => null
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -110,7 +111,7 @@ public class Step01VariableTest extends PlainTestCase {
         instanceMagiclamp = "magician";
         helpInstanceVariableViaMethod(instanceMagiclamp);
         String sea = instanceBroadway + "|" + instanceDockside + "|" + instanceHangar + "|" + instanceMagiclamp;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => bigband|1|null|magician
     }
 
     private void helpInstanceVariableViaMethod(String instanceMagiclamp) {
@@ -130,7 +131,7 @@ public class Step01VariableTest extends PlainTestCase {
         String sea = "harbor";
         int land = 415;
         helpMethodArgumentImmutableMethodcall(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor
     }
 
     private void helpMethodArgumentImmutableMethodcall(String sea, int land) {
@@ -147,7 +148,7 @@ public class Step01VariableTest extends PlainTestCase {
         StringBuilder sea = new StringBuilder("harbor");
         int land = 415;
         helpMethodArgumentMethodcall(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor416
     }
 
     private void helpMethodArgumentMethodcall(StringBuilder sea, int land) {
@@ -163,7 +164,7 @@ public class Step01VariableTest extends PlainTestCase {
         StringBuilder sea = new StringBuilder("harbor");
         int land = 415;
         helpMethodArgumentVariable(sea, land);
-        log(sea); // your answer? => 
+        log(sea); // your answer? => harbor416 -> harbor
     }
 
     private void helpMethodArgumentVariable(StringBuilder sea, int land) {
@@ -191,8 +192,14 @@ public class Step01VariableTest extends PlainTestCase {
      * o すべての変数をlog()でカンマ区切りの文字列で表示
      * </pre>
      */
+    private int piari;
+
     public void test_variable_writing() {
         // define variables here
+        String sea = "mystic";
+        Integer land = null;
+
+        log(piari, sea, land);
     }
 
     // ===================================================================================
@@ -208,7 +215,33 @@ public class Step01VariableTest extends PlainTestCase {
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
+
+    private int land = 0;
+
     public void test_variable_yourExercise() {
         // write your code here
+        Integer a = 1;
+        int b = 1;
+        testtt(a + b);
+        log(land); // =>
+    }
+
+    private void testtt(Integer sea) {
+        land = 10;
+    }
+
+    private void testtt(int sea) {
+        land = 100;
+    }
+
+    public void test_variable_yourExercise2() {
+        // write your code here
+        int a = 1;
+        log(++a == a++, a == a++, ++a == a); // =>
+    }
+
+    public void test_variable_yourExercise3() {
+        // write your code here
+
     }
 }

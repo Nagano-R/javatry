@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,13 @@ public class Step03DataTypeTest extends PlainTestCase {
             BigDecimal addedDecimal = amba.add(new BigDecimal(land));
             sea = String.valueOf(addedDecimal);
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 18.4 ○
+
+        /*
+         * ifは常にtrue
+         * landは9+1=10 -1= 9
+         * addDecimal = amba(9.4) + land(9) = 18.4
+         * */
     }
 
     // ===================================================================================
@@ -64,9 +70,9 @@ public class Step03DataTypeTest extends PlainTestCase {
     public void test_datatype_primitive() {
         byte sea = 127; // max
         short land = 32767; // max
-        int piari = 1;
+        int piari = 2147483647; // max
         long bonvo = 9223372036854775807L; // max
-        float dstore = 1.1f;
+        float dstore = 2147483647.1f;
         double amba = 2.3d;
         char miraco = 'a';
         boolean dohotel = miraco == 'a';
@@ -79,10 +85,16 @@ public class Step03DataTypeTest extends PlainTestCase {
                 sea = (byte) amba;
             }
         }
-        if ((int) dstore > piari) {
+        if (dstore > piari) {
             sea = 0;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 2 ○
+
+        /*
+         * if文はintを基として比較される？ キャストしない限り7も7.1もイコール
+         * dohotelはtrue
+         * (byte)2.3 は 2
+         * */
     }
 
     // ===================================================================================
@@ -92,7 +104,12 @@ public class Step03DataTypeTest extends PlainTestCase {
     public void test_datatype_object() {
         St3ImmutableStage stage = new St3ImmutableStage("hangar");
         String sea = stage.getStageName();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => (空文字) × => hunger
+
+        /*
+         * finalは定数かと思ってた コンストラクタでなら書き換えができる？
+         *
+         * */
     }
 
     private static class St3ImmutableStage {

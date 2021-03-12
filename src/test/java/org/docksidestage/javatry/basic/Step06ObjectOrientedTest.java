@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,9 +128,11 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         // [buy one-day passport]
         //
-        // if step05 has been finished, you can use this code by jflute (2019/06/15)
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // #fixme you if step05 has been finished, you can use this code by jflute (2019/06/15)
+        // _/_/_/_/_/_/_/_/_/_/
         //Ticket ticket = booth.buyOneDayPassport(10000);
-        booth.buyOneDayPassport(10000); // as temporary, remove if you finished step05
+        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
         Ticket ticket = new Ticket(7400); // also here
 
         // *buyOneDayPassport() has this process:
@@ -195,9 +197,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Dog dog = new Dog();
         BarkedSound sound = dog.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         int land = dog.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -205,9 +207,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Dog();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -215,9 +217,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = createAnyAnimal();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     private Animal createAnyAnimal() {
@@ -233,19 +235,19 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     private void doAnimalSeaLand_for_4th(Animal animal) {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
-    public void test_objectOriented_polymorphism_5th_overrideWithSuper() {
+    public void test_objectOriented_polymorphism_5rd_overrideWithSuper() {
         Animal animal = new Cat();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -253,9 +255,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Zombie();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     // ===================================================================================
@@ -265,18 +267,18 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     public void test_objectOriented_polymorphism_interface_dispatch() {
         Loudable loudable = new Zombie();
         String sea = loudable.soundLoudly();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         String land = ((Zombie) loudable).bark().getBarkWord();
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_objectOriented_polymorphism_interface_hierarchy() {
         Loudable loudable = new AlarmClock();
         String sea = loudable.soundLoudly();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         boolean land = loudable instanceof Animal;
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -284,9 +286,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal seaAnimal = new Cat();
         Animal landAnimal = new Zombie();
         boolean sea = seaAnimal instanceof FastRunner;
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
         boolean land = landAnimal instanceof FastRunner;
-        log(land); // your answer? => 
+        log(land); // your answer? =>
     }
 
     /**

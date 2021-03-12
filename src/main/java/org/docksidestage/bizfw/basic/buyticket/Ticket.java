@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,40 +17,57 @@ package org.docksidestage.bizfw.basic.buyticket;
 
 /**
  * @author jflute
+ * @author Ren
  */
-public class Ticket {
 
-    // ===================================================================================
-    //                                                                           Attribute
-    //                                                                           =========
-    private final int displayPrice;
-    private boolean alreadyIn;
+// TODO nagano [tips] なんとかInterfaceという名前のInterfaceを作る人はあまりいない (まあ暫定) by jflute (2020/10/16)
+/*
+ * インターフェースとは・・・
+ * インタフェースでは定数とメソッドのみが定義できる。
+ * インタフェースの変数は自動的にpublic static finalが付けられる。（定数になる）
+ * 宣言されたメソッドは引き継ぎ先ですべて実装する必要がある
+ * どんなクラスでも
+ * 入場する、額面を見る、使用済みか確認する
+ * という挙動の実装が約束されているのがメリット（？）
+ *
+ * Ticketクラスは残すために
+ * TicketInterface（仮）を新規作成
+ *
+ * 必要なメソッド
+ * doInPark()
+ * getDisplayPrice()
+ * isAlreadyIn()? メソッド名がよろしくない気がする 仮置き
+ * */
 
-    // ===================================================================================
-    //                                                                         Constructor
-    //                                                                         ===========
-    public Ticket(int displayPrice) {
-        this.displayPrice = displayPrice;
-    }
+public interface Ticket {
+    /*
+     * int displayPrice;
+     * boolean alreadyIn;
+     * int days;
+     * TimeType timetype;
+     * */
 
-    // ===================================================================================
-    //                                                                             In Park
-    //                                                                             =======
-    public void doInPark() {
-        if (alreadyIn) {
-            throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
+    public void doInPark();
+
+    public int getDisplayPrice();
+
+    public boolean isAlreadyIn();
+
+    public int getDays();
+
+    public TimeType getTimeType();
+
+    public enum TimeType {
+        NORMAL("通常版"), SHORT("短縮版");
+
+        private final String label;
+
+        private TimeType(String label) {
+            this.label = label;
         }
-        alreadyIn = true;
-    }
 
-    // ===================================================================================
-    //                                                                            Accessor
-    //                                                                            ========
-    public int getDisplayPrice() {
-        return displayPrice;
-    }
-
-    public boolean isAlreadyIn() {
-        return alreadyIn;
+        public String getLabel() {
+            return label;
+        }
     }
 }

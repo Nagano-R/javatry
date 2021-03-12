@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ public class Step02IfForTest extends PlainTestCase {
      * What string is sea variable at the method end? <br>
      * (メソッド終了時の変数 sea の中身は？)
      */
-    public void test_if_basic() { // example, so begin from the next method
+    public void test_if_basic() {
         int sea = 904;
         if (sea >= 904) {
             sea = 2001;
@@ -52,7 +52,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 7;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -67,7 +67,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 9;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -91,7 +91,7 @@ public class Step02IfForTest extends PlainTestCase {
         if (land) {
             sea = 10;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 8 -> 10
     }
 
     // ===================================================================================
@@ -107,7 +107,7 @@ public class Step02IfForTest extends PlainTestCase {
                 sea = stage;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -117,7 +117,7 @@ public class Step02IfForTest extends PlainTestCase {
         for (String stage : stageList) {
             sea = stage;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -133,7 +133,7 @@ public class Step02IfForTest extends PlainTestCase {
                 break;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => hanger
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -149,7 +149,7 @@ public class Step02IfForTest extends PlainTestCase {
             }
         });
         String sea = sb.toString();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
     }
 
     // ===================================================================================
@@ -161,6 +161,16 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_making() {
         // write if-for here
+        List<String> stageList = prepareStageList();
+        List<String> a_List = new ArrayList<String>();
+        stageList.forEach(stage -> {
+            if (stage.contains("a")) {
+                a_List.add(stage);
+            }
+        });
+        a_List.forEach(stage -> {
+            log(stage);
+        });
     }
 
     // ===================================================================================
@@ -172,6 +182,7 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_refactor_foreach_to_forEach() {
         List<String> stageList = prepareStageList();
+
         String sea = null;
         for (String stage : stageList) {
             if (stage.startsWith("br")) {
@@ -182,7 +193,38 @@ public class Step02IfForTest extends PlainTestCase {
                 break;
             }
         }
-        log(sea); // should be same as before-fix
+        log(sea);
+        StringBuilder sea2 = new StringBuilder();
+
+        //文の始まりが"br"でなく文中に"ga"を含むものの中で、最も前方にあるもの 文中に"ga"を含む要素がない場合、文の始まりが"br"でなく最も後方にあるもの
+        //seaには文の始まりが"br"でないものが入ることを確定させる
+        /*stageList.forEach(stage -> {
+            if (sea2.length() == 0) { // まだ何も入っていない場合
+                if (!stage.startsWith("br")) { //現ループの始まりが"br"でない
+                    sea2.append(stage); //要素を挿入
+                } else { //現ループの始まりが"br"である
+                    return; //何もしない
+                }
+            } else if (sea2.indexOf("ga") > 0) { //既に該当する要素がある場合、その後の走査をスキップ
+                return;
+            } else if (!stage.startsWith("br")) { //現ループの文も始まりが"br"でない場合
+                sea2.replace(0, sea2.length(), stage); //要素を置き換え
+            }
+        });*/
+
+        /* 上と下のforEach内は等価
+         * StringBuilderの初期値はnullでなく""(空文字)なので、NullPointerException等は気にしなくて良い
+         * 空文字なら.append(txt) と .replace(0,0,txt) は同じ
+         * */
+
+        stageList.forEach(stage -> {
+            if (stage.startsWith("br") || sea2.indexOf("ga") > 0) {
+                return;
+            }
+            sea2.replace(0, sea2.length(), stage);
+        });
+
+        log(sea2); // should be same as before-fix
     }
 
     /**
@@ -191,7 +233,7 @@ public class Step02IfForTest extends PlainTestCase {
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
      * your question here (ここにあなたの質問を):
-     * 
+     *
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
