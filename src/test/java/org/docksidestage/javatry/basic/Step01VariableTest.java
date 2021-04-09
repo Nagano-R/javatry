@@ -211,7 +211,7 @@ public class Step01VariableTest extends PlainTestCase {
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
      * your question here (ここにあなたの質問を):
-     * 
+     *
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
@@ -226,9 +226,10 @@ public class Step01VariableTest extends PlainTestCase {
         log(land); // =>
     }
 
-    private void testtt(Integer sea) {
-        land = 10;
-    }
+    // おもいで
+    //    private void testtt(Integer sea) {
+    //        land = 10;
+    //    }
 
     private void testtt(int sea) {
         land = 100;
@@ -237,7 +238,8 @@ public class Step01VariableTest extends PlainTestCase {
     public void test_variable_yourExercise2() {
         // write your code here
         int a = 1;
-        log(++a == a++, a == a++, ++a == a); // =>
+        // おもいで
+        // log(++a == a++, a == a++, ++a == a); // =>
     }
 
     public void test_variable_yourExercise3() {

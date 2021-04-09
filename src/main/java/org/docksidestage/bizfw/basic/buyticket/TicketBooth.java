@@ -62,7 +62,7 @@ public class TicketBooth {
         } else {
             salesProceeds = ONE_DAY_PRICE;
         }
-
+    
         return new Ticket(1);
     }*/
 

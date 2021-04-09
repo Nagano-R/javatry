@@ -212,6 +212,9 @@ public class Step05ClassTest extends PlainTestCase {
             case SHORT:
                 System.out.println("チケットは2日分で、短縮版です");
                 break;
+            case NIGHT:
+                System.out.println("チケットは2日分で、夜間限定です");
+                break;
             }
             break;
         default:
@@ -302,7 +305,7 @@ public class Step05ClassTest extends PlainTestCase {
         System.out.println(twoday.isAlreadyIn());
         //twoday.doInPark(); //エラー
 
-        // TODO Ren 次回このあたり (2021/01/15)
+        // done Ren 次回このあたり (2021/01/15)
     }
 
     /**
@@ -335,9 +338,9 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBuyResult nightTwodayTicketResult = booth.buyNightOnlyTwoDayPassport(1000000); //2日(夜間)チケットを買う
         MultiDayTicket nightTwoday = nightTwodayTicketResult.getTicket(); //チケット本体
         int oturi = nightTwodayTicketResult.getChange(); //おつり
-        System.out.println("チケットの値段 :" + nightTwoday.getDisplayPrice()); //チケットの金額
-        System.out.println("おつり :" + oturi);
-        System.out.println("チケットの種類 :" + nightTwoday.getTimeType());
+        System.out.println("チケットの値段 : " + nightTwoday.getDisplayPrice()); //チケットの金額
+        System.out.println("おつり : " + oturi);
+        System.out.println("チケットの種類 : " + nightTwoday.getTimeType().getLabel());
         nightTwoday.doInPark();
         nightTwoday.doInPark();
         // nightTwoday.doInPark(); //エラー

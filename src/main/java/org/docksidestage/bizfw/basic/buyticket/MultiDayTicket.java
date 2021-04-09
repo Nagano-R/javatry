@@ -5,7 +5,7 @@ package org.docksidestage.bizfw.basic.buyticket;
  */
 public class MultiDayTicket implements Ticket {
 
-    //TODO コメント整理は後ほど（10/16）
+    //done コメント整理は後ほど（10/16）
     private final int displayPrice; //額面
     private final int days; //使用可能日数
     private final TimeType timetype; //時間帯

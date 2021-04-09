@@ -32,7 +32,7 @@ import org.docksidestage.unit.PlainTestCase;
  * Operate exercise as javadoc. If it's question style, write your answer before test execution. <br>
  * (javadocの通りにエクササイズを実施。質問形式の場合はテストを実行する前に考えて答えを書いてみましょう)
  * @author jflute
- * @author your_name_here
+ * @author nagano
  */
 public class Step06ObjectOrientedTest extends PlainTestCase {
 
@@ -52,7 +52,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         int oneDayPrice = 7400;
         int quantity = 10;
-        Integer salesProceeds = null;
+        // Integer salesProceeds = null; // 売上高は0スタート nullに加算処理するとエラー
+        Integer salesProceeds = 0;
 
         //
         // [buy one-day passport]
@@ -65,12 +66,14 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
             throw new IllegalStateException("Short money: handedMoney=" + handedMoney);
         }
         --quantity;
-        salesProceeds = handedMoney;
+        // salesProceeds = handedMoney; // 売上高には代入ではなく加算 & 出されたお金を全部売り上げに加算するのはズル
+        salesProceeds += oneDayPrice;
 
         //
         // [ticket info]
         //
-        int displayPrice = quantity;
+        // int displayPrice = quantity; // チケットに刻むのは在庫でなく値段
+        int displayPrice = oneDayPrice;
         boolean alreadyIn = false;
 
         // other processes here...
@@ -88,14 +91,17 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         // [final process]
         //
-        saveBuyingHistory(quantity, displayPrice, salesProceeds, alreadyIn);
+        // saveBuyingHistory(quantity, displayPrice, salesProceeds, alreadyIn); // 引数の順番がおかしい
+        saveBuyingHistory(quantity, salesProceeds, displayPrice, alreadyIn);
     }
 
     private void saveBuyingHistory(int quantity, Integer salesProceeds, int displayPrice, boolean alreadyIn) {
         if (alreadyIn) {
             // only logging here (normally e.g. DB insert)
-            showTicketBooth(displayPrice, salesProceeds);
-            showYourTicket(quantity, alreadyIn);
+            // showTicketBooth(displayPrice, salesProceeds);
+            // showYourTicket(quantity, alreadyIn); // quantity と displayPrice が逆
+            showTicketBooth(quantity, salesProceeds);
+            showYourTicket(displayPrice, alreadyIn);
         }
     }
 
@@ -120,7 +126,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         TicketBooth booth = new TicketBooth();
 
-        // *booth has these properties:
+        // *booth has these properties: （訳:boothには次のような特徴があります）
         //int oneDayPrice = 7400;
         //int quantity = 10;
         //Integer salesProceeds = null;
@@ -131,9 +137,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
         // #fixme you if step05 has been finished, you can use this code by jflute (2019/06/15)
         // _/_/_/_/_/_/_/_/_/_/
-        //Ticket ticket = booth.buyOneDayPassport(10000);
-        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
-        Ticket ticket = new Ticket(7400); // also here
+        Ticket ticket = booth.buyOneDayPassport(10000);
+        // booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05 （訳:一時的なものとして、step05が終了したら削除してください）
+        //Ticket ticket = new Ticket(7400); // also here （訳:こちらも）
 
         // *buyOneDayPassport() has this process:
         //if (quantity <= 0) {
@@ -185,6 +191,17 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     private void doShowYourTicket(Ticket ticket) {
         log("Your Ticket: displayPrice={}, alreadyIn={}", ticket.getDisplayPrice(), ticket.isAlreadyIn());
     }
+
+    /* 「オブジェクトとは何か？」
+     *
+     * 現実世界において実体のあるもの？チケットとか売り場とか
+     * 「モノ」をそれが持つ情報（変数）と役割（メソッド）で表現したもの、のような感じ
+     * オブジェクトを使わない場合と比べて、
+     * doShowTicketBooth の引数がTicketBooth になっていたりしてスッキリ
+     *
+     * 管理しやすい、大量生産しやすい、やっていることがメソッド名やオブジェクト名で説明しやすい
+     *
+     * */
 
     // ===================================================================================
     //                                                              Polymorphism Beginning
