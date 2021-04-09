@@ -198,6 +198,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      * 「モノ」をそれが持つ情報（変数）と役割（メソッド）で表現したもの、のような感じ
      * オブジェクトを使わない場合と比べて、
      * doShowTicketBooth の引数がTicketBooth になっていたりしてスッキリ
+     * 処理が人間にわかりやすい
      *
      * 管理しやすい、大量生産しやすい、やっていることがメソッド名やオブジェクト名で説明しやすい
      *
@@ -214,9 +215,14 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Dog dog = new Dog();
         BarkedSound sound = dog.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => wan ○
         int land = dog.getHitPoint();
-        log(land); // your answer? =>
+        log(land); // your answer? => 10 × => 7
+        /*
+         * Q.なんでHP減ってるの？
+         * A.ほえる指令を出した時に息吸い込み、腹筋チャージ、ほえる動作でそれぞれHPが1ずつ減っている
+         * HPの概念やほえる動作はAnimalからの継承
+         * */
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -224,9 +230,15 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Dog();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => wan ○
         int land = animal.getHitPoint();
-        log(land); // your answer? =>
+        log(land); // your answer? => 7 ○
+        /*
+         * Abstractは抽象クラス
+         * 宣言のみ行い、処理自体は記述しない
+         * interfaceに書かれたメソッドっぽい？
+         * Animal型にDogインスタンスぶちこんでも問題ないようだ
+         * */
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
