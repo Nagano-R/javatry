@@ -19,6 +19,7 @@ import org.docksidestage.bizfw.basic.buyticket.Ticket;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
 import org.docksidestage.bizfw.basic.objanimal.Animal;
 import org.docksidestage.bizfw.basic.objanimal.BarkedSound;
+import org.docksidestage.bizfw.basic.objanimal.Bird;
 import org.docksidestage.bizfw.basic.objanimal.Cat;
 import org.docksidestage.bizfw.basic.objanimal.Dog;
 import org.docksidestage.bizfw.basic.objanimal.Zombie;
@@ -277,12 +278,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Cat();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => nya-
+        log(sea); // your answer? => nya- ○
         int land = animal.getHitPoint();
         log(land); // your answer? => 7 × => 5
         /*
-         * ?
-         *
          * Override: 継承した親クラスのメソッドを上書き
          * super: 一個上の親クラスを参照するときに使う
          * downHP();→子クラスのメソッド super.downHP();→親クラスのメソッド
@@ -296,9 +295,12 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Zombie();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => uooo ○
         int land = animal.getHitPoint();
-        log(land); // your answer? =>
+        log(land); // your answer? => -1 ○
+        /*
+         * Overrideにより初期HPが-1(∞扱い？)になっていて、HPが減らなくなっている（HP減少処理を消している）（ﾑﾃｷ）
+         * */
     }
 
     // ===================================================================================
@@ -308,18 +310,26 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     public void test_objectOriented_polymorphism_interface_dispatch() {
         Loudable loudable = new Zombie();
         String sea = loudable.soundLoudly();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => uooo ○
         String land = ((Zombie) loudable).bark().getBarkWord();
-        log(land); // your answer? =>
+        log(land); // your answer? => uooo ○
+        /*
+         * DownCast
+         * AnimalからLoudableに格下げ
+         * 型はLoudableだけど一応Zombie
+         * */
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_objectOriented_polymorphism_interface_hierarchy() {
         Loudable loudable = new AlarmClock();
         String sea = loudable.soundLoudly();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => jiri jiri jiri--- ○
         boolean land = loudable instanceof Animal;
-        log(land); // your answer? =>
+        log(land); // your answer? => false ○
+        /*
+         * 何か音が出るからといってAnimalとは限らない
+         * */
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -327,9 +337,13 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal seaAnimal = new Cat();
         Animal landAnimal = new Zombie();
         boolean sea = seaAnimal instanceof FastRunner;
-        log(sea); // your answer? =>
+        log(sea); // your answer? => true ○
         boolean land = landAnimal instanceof FastRunner;
-        log(land); // your answer? =>
+        log(land); // your answer? => false ○
+        /*
+         * CatはFastRunnerインターフェースを実装
+         * Cat->Animal & FastRunner & Loudable & ...
+         * */
     }
 
     /**
@@ -338,6 +352,13 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_interface_runnerImpl() {
         // your confirmation code here
+        Dog dog = new Dog();
+        boolean tf = dog instanceof FastRunner;
+        log(tf);
+        /*
+         * FastRunnerを実装するとrunメソッドの追加が必要
+         * run()の中身は未決定
+         * */
     }
 
     // ===================================================================================
@@ -349,6 +370,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeConcrete() {
         // your confirmation code here
+        Bird dog = new Bird();
+        boolean tf = dog instanceof FastRunner;
+        log(tf);
     }
 
     /**

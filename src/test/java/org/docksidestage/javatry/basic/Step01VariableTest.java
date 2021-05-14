@@ -237,6 +237,7 @@ public class Step01VariableTest extends PlainTestCase {
 
     public void test_variable_yourExercise2() {
         // write your code here
+        @SuppressWarnings("unused")
         int a = 1;
         // おもいで
         // log(++a == a++, a == a++, ++a == a); // =>
