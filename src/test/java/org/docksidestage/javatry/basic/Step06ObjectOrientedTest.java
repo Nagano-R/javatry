@@ -246,9 +246,12 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = createAnyAnimal();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => wan ○
         int land = animal.getHitPoint();
-        log(land); // your answer? =>
+        log(land); // your answer? => 7 ○
+        /*
+         * 上の問題とやっていることは変わらないように見える
+         * */
     }
 
     private Animal createAnyAnimal() {
@@ -264,9 +267,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     private void doAnimalSeaLand_for_4th(Animal animal) {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => wan ○
         int land = animal.getHitPoint();
-        log(land); // your answer? =>
+        log(land); // your answer? => 7 ○
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -274,9 +277,18 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Cat();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => nya-
         int land = animal.getHitPoint();
-        log(land); // your answer? =>
+        log(land); // your answer? => 7 × => 5
+        /*
+         * ?
+         *
+         * Override: 継承した親クラスのメソッドを上書き
+         * super: 一個上の親クラスを参照するときに使う
+         * downHP();→子クラスのメソッド super.downHP();→親クラスのメソッド
+         * みたいな
+         * HPdown時、HPが偶数なら更にHPが減るようになっている(10→9→7→5)
+         * */
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
