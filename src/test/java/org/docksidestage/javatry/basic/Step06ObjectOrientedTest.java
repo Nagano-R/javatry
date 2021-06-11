@@ -27,6 +27,9 @@ import org.docksidestage.bizfw.basic.objanimal.fly.Flyer;
 import org.docksidestage.bizfw.basic.objanimal.loud.AlarmClock;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
+import org.docksidestage.javatry.basic.st6.dbms.Sql;
+import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
+import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -88,6 +91,11 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         if (alreadyIn) {
             throw new IllegalStateException("Already in park by this ticket: displayPrice=" + quantity);
         }
+        /*
+         * ↑この位置にalready判定は不適切？
+         * [do in park now!!!]部分でalreadyIn = true;を行った場合、確定でエラーになる
+         * 行わなかった場合、必ずスルーされる
+         * */
         alreadyIn = true;
 
         //
@@ -95,6 +103,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         // saveBuyingHistory(quantity, displayPrice, salesProceeds, alreadyIn); // 引数の順番がおかしい
         saveBuyingHistory(quantity, salesProceeds, displayPrice, alreadyIn);
+        /*
+         * メソッド名はsaveBuyingHistoryではなくshowBuyingHistoryが正しい？（メソッド内でsaveする挙動は行っていないため）
+         * */
     }
 
     private void saveBuyingHistory(int quantity, Integer salesProceeds, int displayPrice, boolean alreadyIn) {
@@ -316,7 +327,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         log(land); // your answer? => uooo ○
         /*
          * DownCast
-         * AnimalからLoudableに格下げ
+         * AnimalからLoudableに抽象化
          * 型はLoudableだけど一応Zombie
          * */
     }
@@ -396,6 +407,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
+        St6MySql mySql = new St6MySql();
+        St6PostgreSql postgreSql = new St6PostgreSql();
+        boolean tf = mySql instanceof Sql;
+
     }
 
     /**
