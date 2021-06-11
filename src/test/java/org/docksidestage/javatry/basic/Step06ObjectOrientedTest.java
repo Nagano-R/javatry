@@ -89,7 +89,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // [do in park now!!!]
         //
         if (alreadyIn) {
-            throw new IllegalStateException("Already in park by this ticket: displayPrice=" + quantity);
+            // throw new IllegalStateException("Already in park by this ticket: displayPrice=" + quantity);
+            throw new IllegalStateException("Already in park by this ticket: displayPrice=" + displayPrice);
         }
         /*
          * ↑この位置にalready判定は不適切？
@@ -410,7 +411,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         St6MySql mySql = new St6MySql();
         St6PostgreSql postgreSql = new St6PostgreSql();
         boolean tf = mySql instanceof Sql;
-
+        log(tf);
+        tf = postgreSql instanceof Sql;
+        log(tf);
     }
 
     /**
