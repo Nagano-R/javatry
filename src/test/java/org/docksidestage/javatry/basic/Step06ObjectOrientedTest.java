@@ -23,6 +23,7 @@ import org.docksidestage.bizfw.basic.objanimal.Bird;
 import org.docksidestage.bizfw.basic.objanimal.Cat;
 import org.docksidestage.bizfw.basic.objanimal.Dog;
 import org.docksidestage.bizfw.basic.objanimal.Zombie;
+import org.docksidestage.bizfw.basic.objanimal.fly.Flyer;
 import org.docksidestage.bizfw.basic.objanimal.loud.AlarmClock;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
@@ -370,8 +371,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeConcrete() {
         // your confirmation code here
-        Bird dog = new Bird();
-        boolean tf = dog instanceof FastRunner;
+        Bird bird = new Bird();
+        boolean tf = bird instanceof FastRunner;
         log(tf);
     }
 
@@ -381,6 +382,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeInterface() {
         // your confirmation code here
+        Bird piyo = new Bird();
+        boolean tf = piyo instanceof Flyer;
+        log(tf);
     }
 
     // ===================================================================================
