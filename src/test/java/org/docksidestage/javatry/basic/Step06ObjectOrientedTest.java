@@ -30,6 +30,9 @@ import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
 import org.docksidestage.javatry.basic.st6.dbms.Sql;
 import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
 import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
+import org.docksidestage.javatry.basic.st6.os.Mac;
+import org.docksidestage.javatry.basic.st6.os.OldWindows;
+import org.docksidestage.javatry.basic.st6.os.Windows;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -410,10 +413,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // your confirmation code here
         St6MySql mySql = new St6MySql();
         St6PostgreSql postgreSql = new St6PostgreSql();
-        boolean tf = mySql instanceof Sql;
-        log(tf);
-        tf = postgreSql instanceof Sql;
-        log(tf);
+        log(mySql instanceof Sql);
+        log(postgreSql instanceof Sql);
     }
 
     /**
@@ -422,6 +423,12 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
+        Windows win = new Windows("nagano");
+        Mac mac = new Mac("nagano");
+        OldWindows oldwin = new OldWindows("nagano");
+        log(win.buildUserResourcePath("folder"));
+        log(mac.buildUserResourcePath("folder"));
+        log(oldwin.buildUserResourcePath("folder"));
     }
 
     // ===================================================================================
