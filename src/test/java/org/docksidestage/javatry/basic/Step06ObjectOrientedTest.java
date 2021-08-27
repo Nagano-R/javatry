@@ -415,6 +415,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         St6PostgreSql postgreSql = new St6PostgreSql();
         log(mySql instanceof Sql);
         log(postgreSql instanceof Sql);
+        log(mySql.buildPagingQuery(3, 5));
     }
 
     /**

@@ -21,7 +21,8 @@ package org.docksidestage.javatry.basic.st6.dbms;
 public class St6MySql extends Sql {
 
     public String buildPagingQuery(int pageSize, int pageNumber) {
-        int offset = pageSize * (pageNumber - 1);
+        // int offset = pageSize * (pageNumber - 1); //おもいで
+        int offset = getOffset(pageSize, pageNumber);
         return "limit " + offset + ", " + pageSize;
     }
 }

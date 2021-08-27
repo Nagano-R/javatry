@@ -9,7 +9,7 @@ public abstract class Sql {
 
     abstract public String buildPagingQuery(int pageSize, int pageNumber);
 
-    protected int getOffset() {
-        return pageSize * (pageNumber - 1); //???????????????????????
+    protected int getOffset(int pageSize, int pageNumber) {
+        return pageSize * (pageNumber - 1); // 共通処理をかける？
     }
 }
