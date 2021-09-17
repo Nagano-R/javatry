@@ -17,10 +17,11 @@ package org.docksidestage.javatry.basic.st6.dbms;
 
 /**
  * @author jflute
+ * @author Ren
  */
 public class St6MySql extends Dbms {
 
-    public String getPagingQuery(int offset, int pageSize) {
-        return "offset " + offset + " limit " + pageSize;
+    protected String getPagingQuery(int offset, int pageSize) {
+        return "limit " + offset + ", " + pageSize;
     }
 }

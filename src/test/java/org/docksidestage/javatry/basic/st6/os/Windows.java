@@ -4,27 +4,20 @@ package org.docksidestage.javatry.basic.st6.os;
  * @author Ren
  * */
 
-public class Windows {
-
-    private final String osType = "Windows";
-    private final String loginId;
+public class Windows extends St6OperationSystem {
 
     public Windows(String loginId) {
         this.loginId = loginId;
     }
 
-    public String buildUserResourcePath(String relativePath) {
-        String fileSeparator = getFileSeparator();
-        String userDirectory = getUserDirectory();
-        String resourcePath = userDirectory + fileSeparator + relativePath;
-        return resourcePath.replace("/", fileSeparator);
-    }
-
+    @Override
     protected String getFileSeparator() {
         return "\\";
     }
 
+    @Override
     protected String getUserDirectory() {
         return "/Users/" + loginId;
     }
+
 }

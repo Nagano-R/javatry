@@ -4,27 +4,20 @@ package org.docksidestage.javatry.basic.st6.os;
  * @author Ren
  * */
 
-public class OldWindows {
-
-    private final String osType = "OldWindows";
-    private final String loginId;
+public class OldWindows extends St6OperationSystem {
 
     public OldWindows(String loginId) {
         this.loginId = loginId;
     }
 
-    public String buildUserResourcePath(String relativePath) {
-        String fileSeparator = getFileSeparator();
-        String userDirectory = getUserDirectory();
-        String resourcePath = userDirectory + fileSeparator + relativePath;
-        return resourcePath.replace("/", fileSeparator);
-    }
-
+    @Override
     protected String getFileSeparator() {
         return "\\";
     }
 
+    @Override
     protected String getUserDirectory() {
         return "/Documents and Settigs/" + loginId;
     }
+
 }

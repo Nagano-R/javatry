@@ -17,6 +17,7 @@ package org.docksidestage.javatry.basic.st6.dbms;
 
 /**
  * @author jflute
+ * @author Ren
  */
 public class St6PostgreSql extends Dbms {
 
@@ -25,7 +26,7 @@ public class St6PostgreSql extends Dbms {
         return "offset " + offset + " limit " + pageSize;
     }*/ //おもいで
 
-    public String getPagingQuery(int offset, int pageSize) {
+    protected String getPagingQuery(int offset, int pageSize) {
         return "offset " + offset + " limit " + pageSize;
     }
 }
