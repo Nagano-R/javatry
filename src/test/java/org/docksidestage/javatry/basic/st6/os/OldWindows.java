@@ -7,7 +7,7 @@ package org.docksidestage.javatry.basic.st6.os;
 public class OldWindows extends St6OperationSystem {
 
     public OldWindows(String loginId) {
-        this.loginId = loginId;
+        super(loginId);
     }
 
     @Override
