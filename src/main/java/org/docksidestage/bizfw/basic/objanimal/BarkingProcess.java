@@ -1,37 +1,46 @@
+/**
+ * @author Ren
+ * */
+
 package org.docksidestage.bizfw.basic.objanimal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author nagano
- * */
-
 public class BarkingProcess {
 
     private static final Logger logger = LoggerFactory.getLogger(Animal.class);
-    protected String barkWord;
-    protected int hp;
 
-    public BarkingProcess(String barkWord) {
-        this.barkWord = barkWord;
+    public BarkingProcess() {
+
     }
 
-    public int bark(int hitpoint) {
-        hp = hitpoint;
-        return hp;
+    /*
+     * 元々BarkingProcessクラスはloudパッケージ配下に作っていたけれど、
+     * そこだとBarkedSoundクラスを参照できなかった。
+     * BarkedSoundはpublicだからパッケージの階層が違っても参照できるはずだけれど？？？
+     * */
+    public BarkedSound bark() {
+        breatheIn();
+        prepareAbdominalMuscle();
+        String barkWord = getBarkWord();
+        BarkedSound barkedSound = doBark(barkWord);
+        return barkedSound;
     }
 
-    protected void breatheIn() {
+    /*
+     * ここから下はprotectedではなくprivateでいいのでは？
+     * どうせここ以外で呼ぶこともなさそう
+     * */
+    private void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
         downHitPoint();
     }
 
-    protected void downHitPoint() {
-        --hp;
-        if (hp == 0) {
-            throw new IllegalStateException("I'm very tired, so I want to sleep" + barkWord);
-        }
+    private void prepareAbdominalMuscle() {
+        logger.debug("...Using my abdominal muscle"); // dummy implementation
+        downHitPoint();
     }
 
+    protected abstract String getBarkWord(); //？？？？？？？？
 }
