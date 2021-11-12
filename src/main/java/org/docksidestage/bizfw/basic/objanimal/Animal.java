@@ -30,6 +30,8 @@ public abstract class Animal implements Loudable {
     //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(Animal.class);
 
+    private static final BarkingProcess barkingProcess = new BarkingProcess();
+
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -49,12 +51,16 @@ public abstract class Animal implements Loudable {
     // ===================================================================================
     //                                                                               Bark
     //                                                                              ======
+    //    public BarkedSound bark() {
+    //        breatheIn();
+    //        prepareAbdominalMuscle();
+    //        String barkWord = getBarkWord();
+    //        BarkedSound barkedSound = doBark(barkWord);
+    //        return barkedSound;
+    //    }
+
     public BarkedSound bark() {
-        breatheIn();
-        prepareAbdominalMuscle();
-        String barkWord = getBarkWord();
-        BarkedSound barkedSound = doBark(barkWord);
-        return barkedSound;
+        return barkingProcess.barkProcess(getBarkWord());
     }
 
     protected void prepareAbdominalMuscle() {

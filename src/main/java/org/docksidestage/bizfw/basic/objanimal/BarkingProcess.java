@@ -11,19 +11,16 @@ public class BarkingProcess {
 
     private static final Logger logger = LoggerFactory.getLogger(Animal.class);
 
-    public BarkingProcess() {
-
-    }
-
     /*
      * 元々BarkingProcessクラスはloudパッケージ配下に作っていたけれど、
      * そこだとBarkedSoundクラスを参照できなかった。
      * BarkedSoundはpublicだからパッケージの階層が違っても参照できるはずだけれど？？？
+     * （解決済？）
      * */
-    public BarkedSound bark() {
+    public BarkedSound barkProcess(String barkWord) {
         breatheIn();
         prepareAbdominalMuscle();
-        String barkWord = getBarkWord();
+        // String barkWord = getBarkWord(); 直接引数でもらえばOKだと思う
         BarkedSound barkedSound = doBark(barkWord);
         return barkedSound;
     }
@@ -42,5 +39,9 @@ public class BarkingProcess {
         downHitPoint();
     }
 
-    protected abstract String getBarkWord(); //？？？？？？？？
+    private BarkedSound doBark(String barkWord) {
+        downHitPoint();
+        return new BarkedSound(barkWord);
+    }
+
 }
