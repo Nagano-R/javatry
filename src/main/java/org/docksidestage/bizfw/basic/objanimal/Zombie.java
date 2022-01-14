@@ -53,10 +53,17 @@ public class Zombie extends Animal {
     // ===================================================================================
     //                                                                               Bark
     //                                                                              ======
+
+    //    @Override
+    //    protected void breatheIn() {
+    //        super.breatheIn();
+    //        zombieDiary.countBreatheIn();
+    //    }
+
     @Override
-    protected void breatheIn() {
-        super.breatheIn();
+    public BarkedSound bark() {
         zombieDiary.countBreatheIn();
+        return new BarkingProcess(this).barkProcess(getBarkWord());
     }
 
     @Override

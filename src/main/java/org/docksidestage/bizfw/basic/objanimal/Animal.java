@@ -16,19 +16,13 @@
 package org.docksidestage.bizfw.basic.objanimal;
 
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The object for animal(動物).
  * @author jflute
+ * @author Ren
  */
 public abstract class Animal implements Loudable {
-
-    // ===================================================================================
-    //                                                                          Definition
-    //                                                                          ==========
-    private static final Logger logger = LoggerFactory.getLogger(Animal.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -59,10 +53,6 @@ public abstract class Animal implements Loudable {
 
     public BarkedSound bark() {
         return new BarkingProcess(this).barkProcess(getBarkWord());
-    }
-
-    public void ore() {
-        System.out.print(this);
     }
 
     //    protected void prepareAbdominalMuscle() {

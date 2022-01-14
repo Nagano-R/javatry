@@ -1,21 +1,20 @@
-/**
- * @author Ren
- * */
-
 package org.docksidestage.bizfw.basic.objanimal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Ren
+ * */
 public class BarkingProcess {
 
-    public Animal animal;
+    private static final Logger logger = LoggerFactory.getLogger(BarkingProcess.class);
+
+    private final Animal animal;
 
     public BarkingProcess(Animal animal) {
         this.animal = animal;
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(Animal.class);
 
     /*
      * 元々BarkingProcessクラスはloudパッケージ配下に作っていたけれど、
