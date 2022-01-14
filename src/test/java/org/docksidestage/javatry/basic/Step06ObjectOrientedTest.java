@@ -441,6 +441,16 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_withDelegation() {
         // your confirmation code here
+        Dog dog = new Dog();
+        dog.bark();
+        log(dog.getHitPoint());
+        //何のエラーだ？？？ 11/12
+        /*
+         * ZombieクラスがbreatheIn()をOverrideしておる
+         * 困る
+         * 処理自体は完了する
+         * breatheIn()はAnimalから切り離しときたいが･･･？
+         * */
     }
 
     /**

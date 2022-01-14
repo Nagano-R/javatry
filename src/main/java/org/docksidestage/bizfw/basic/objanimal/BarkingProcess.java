@@ -9,6 +9,12 @@ import org.slf4j.LoggerFactory;
 
 public class BarkingProcess {
 
+    public Animal animal;
+
+    public BarkingProcess(Animal animal) {
+        this.animal = animal;
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(Animal.class);
 
     /*
@@ -31,16 +37,16 @@ public class BarkingProcess {
      * */
     private void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
-        downHitPoint();
+        animal.downHitPoint();
     }
 
     private void prepareAbdominalMuscle() {
         logger.debug("...Using my abdominal muscle"); // dummy implementation
-        downHitPoint();
+        animal.downHitPoint();
     }
 
     private BarkedSound doBark(String barkWord) {
-        downHitPoint();
+        animal.downHitPoint();
         return new BarkedSound(barkWord);
     }
 

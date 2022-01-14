@@ -30,8 +30,6 @@ public abstract class Animal implements Loudable {
     //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(Animal.class);
 
-    private static final BarkingProcess barkingProcess = new BarkingProcess();
-
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -60,25 +58,29 @@ public abstract class Animal implements Loudable {
     //    }
 
     public BarkedSound bark() {
-        return barkingProcess.barkProcess(getBarkWord());
+        return new BarkingProcess(this).barkProcess(getBarkWord());
     }
 
-    protected void prepareAbdominalMuscle() {
-        logger.debug("...Using my abdominal muscle"); // dummy implementation
-        downHitPoint();
+    public void ore() {
+        System.out.print(this);
     }
 
-    protected void breatheIn() {
-        logger.debug("...Breathing in"); // dummy implementation
-        downHitPoint();
-    }
+    //    protected void prepareAbdominalMuscle() {
+    //        logger.debug("...Using my abdominal muscle"); // dummy implementation
+    //        downHitPoint();
+    //    }
+
+    //    protected void breatheIn() {
+    //        logger.debug("...Breathing in"); // dummy implementation
+    //        downHitPoint();
+    //    }
 
     protected abstract String getBarkWord();
 
-    protected BarkedSound doBark(String barkWord) {
-        downHitPoint();
-        return new BarkedSound(barkWord);
-    }
+    //    protected BarkedSound doBark(String barkWord) {
+    //        downHitPoint();
+    //        return new BarkedSound(barkWord);
+    //    }
 
     // ===================================================================================
     //                                                                           Hit Point
