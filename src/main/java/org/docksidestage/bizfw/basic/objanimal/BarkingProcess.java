@@ -37,6 +37,8 @@ public class BarkingProcess {
     private void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
         animal.downHitPoint();
+        if (animal instanceof Zombie)
+            ((Zombie) animal).zombieDiary.countBreatheIn();
     }
 
     private void prepareAbdominalMuscle() {

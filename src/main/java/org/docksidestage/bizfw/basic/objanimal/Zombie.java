@@ -62,9 +62,21 @@ public class Zombie extends Animal {
 
     @Override
     public BarkedSound bark() {
-        zombieDiary.countBreatheIn();
-        return new BarkingProcess(this).barkProcess(getBarkWord());
+        // zombieDiary.countBreatheIn();
+        return super.bark();
     }
+
+    /**
+     * おもいで
+     * この実装だとbark();プロセスの外側にzombieDiaryの記述がある
+     * →bark();プロセス内でBreatheIn();が複数回入ってきてしまったら・・・？
+     * →BreatheIn();一回につきzombieDiary一回がいい
+     * →じゃあBreatheIn();内にzombieDiaryを書くしかない
+     * →それかBreatheIn();直後にzombieDiaryを書くか
+     *
+     * どうにかして
+     * 次回（2月）ここ
+     * */
 
     @Override
     protected String getBarkWord() {
