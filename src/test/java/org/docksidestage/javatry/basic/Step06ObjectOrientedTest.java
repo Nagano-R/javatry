@@ -445,9 +445,6 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //        dog.bark();
         //        log(dog.getHitPoint());
 
-        Zombie zonzon = new Zombie();
-        zonzon.bark();
-        log(zonzon.getZombieDiary().getBreatheInCount());
         //何のエラーだ？？？ 11/12
         /*
          * ZombieクラスがbreatheIn()をOverrideしておる
@@ -455,6 +452,13 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
          * 処理自体は完了する
          * breatheIn()はAnimalから切り離しときたいが･･･？
          * */
+
+        Zombie zonzon = new Zombie();
+        zonzon.bark();
+        log(zonzon.getZombieDiary().getBreatheInCount());
+
+        Dog wanwan = new Dog();
+        wanwan.bark();
     }
 
     /**

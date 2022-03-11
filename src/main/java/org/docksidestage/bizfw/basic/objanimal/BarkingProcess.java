@@ -10,7 +10,7 @@ public class BarkingProcess {
 
     private static final Logger logger = LoggerFactory.getLogger(BarkingProcess.class);
 
-    private final Animal animal;
+    protected final Animal animal;
 
     public BarkingProcess(Animal animal) {
         this.animal = animal;
@@ -33,10 +33,15 @@ public class BarkingProcess {
     /*
      * ここから下はprotectedではなくprivateでいいのでは？
      * どうせここ以外で呼ぶこともなさそう
+     *
+     * だめです（3/11）
+     * privateだとOverrideできんかった
+     *
      * */
-    private void breatheIn() {
+    protected void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
         animal.downHitPoint();
+        System.out.print("ふつうのprocessだよ");
         if (animal instanceof Zombie)
             ((Zombie) animal).zombieDiary.countBreatheIn();
 
@@ -51,6 +56,25 @@ public class BarkingProcess {
          * （他の人のやつを聞いて）
          * この問題（呪い）って他の人には出現していない？？？
          * じゃあ他の人のコード見れば解決策が分かるかも？？？
+         * */
+
+        /* 3/11 いただいたやつ */
+        // next hint by jflute (2022/03/11)
+        // > →Zombie.javaの中以外でもZombieの世界が存在するということ？それを見つけたい
+        // > ...それを見つけたい
+        // 自分で作ってみたら？
+        //
+        // next hint by jflute (2022/03/11)
+        // > Zombieの世界
+        // Zombieの世界とは？まあ今だとZombie.javaだけ。ZombieXxxってクラスだったらZombieの世界っぽいね
+
+        /*
+         * 2022/03/11 かんがえたこと
+         * たぶんbretheIn()のオーバーライドが問題のゴールとおもう
+         * オーバーライドは継承関係が前提
+         * Animal 親->子 Zombie  みたいに、BarkingProcess 親->子 ○○BarkingProcess  できるか？
+         * zombie -> Animalのコンストラクタが同じ事してて隙がある
+         * zombieから○○BarkingProcessだと？
          * */
     }
 
