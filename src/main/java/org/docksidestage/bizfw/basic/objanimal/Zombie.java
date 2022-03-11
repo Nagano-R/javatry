@@ -62,7 +62,7 @@ public class Zombie extends Animal {
 
     @Override
     public BarkedSound bark() {
-        // zombieDiary.countBreatheIn();
+        // zombieDiary.countBreatheIn(); おもいで ほかに移植した
         return super.bark();
     }
 

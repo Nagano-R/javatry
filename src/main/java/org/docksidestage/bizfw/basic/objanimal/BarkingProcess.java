@@ -39,6 +39,19 @@ public class BarkingProcess {
         animal.downHitPoint();
         if (animal instanceof Zombie)
             ((Zombie) animal).zombieDiary.countBreatheIn();
+
+        /*
+         * 2022/02/04 レビュー内容
+         * HINT
+         * ・上の気持ち悪い命令文（BarkingProcessの中にZombieの処理）を消すことはできて、
+         * 　なおかつzombieDiaryにカウントさせることはできる。考えることは無駄ではない
+         * ・Zombieのクラスに書くことをしなくても、Zombieの世界に書ければよい（ここはZombieの世界ではない）
+         * 　→Zombie.javaの中以外でもZombieの世界が存在するということ？それを見つけたい
+         *
+         * （他の人のやつを聞いて）
+         * この問題（呪い）って他の人には出現していない？？？
+         * じゃあ他の人のコード見れば解決策が分かるかも？？？
+         * */
     }
 
     private void prepareAbdominalMuscle() {
