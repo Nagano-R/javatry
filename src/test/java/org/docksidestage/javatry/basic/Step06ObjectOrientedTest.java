@@ -455,6 +455,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
 
         Zombie zonzon = new Zombie();
         zonzon.bark();
+        zonzon.bark();
         log(zonzon.getZombieDiary().getBreatheInCount());
 
         Dog wanwan = new Dog();

@@ -41,9 +41,6 @@ public class BarkingProcess {
     protected void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
         animal.downHitPoint();
-        System.out.print("ふつうのprocessだよ");
-        if (animal instanceof Zombie)
-            ((Zombie) animal).zombieDiary.countBreatheIn();
 
         /*
          * 2022/02/04 レビュー内容
