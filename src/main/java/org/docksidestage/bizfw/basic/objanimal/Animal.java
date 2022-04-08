@@ -52,6 +52,20 @@ public abstract class Animal implements Loudable {
     //    }
 
     public BarkedSound bark() {
+        /*4/11
+         * もしここに追加の処理が入ったら？
+         * OverrideしているZombieのbark()にもコピペをする羽目になる
+         * それは避けたい
+         * あとOverride元と先の両方に.barkProcess(getBarkWord())がくっついていて面倒
+         * */
+
+        return new BarkingProcess(this).barkProcess(getBarkWord());
+    }
+
+    /*
+     * ?????
+     * */
+    protected BarkedSound getBarkProcess() {
         return new BarkingProcess(this).barkProcess(getBarkWord());
     }
 

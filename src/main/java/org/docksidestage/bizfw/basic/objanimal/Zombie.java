@@ -64,6 +64,17 @@ public class Zombie extends Animal {
     public BarkedSound bark() {
         // zombieDiary.countBreatheIn(); おもいで ほかに移植した
         //return super.bark(); //いったんコメントアウト
+
+        return new ZombieBarkingProcess(this).barkProcess(getBarkWord());
+    }
+
+    /* ?????? */
+    /*
+     * BarkingProcess(this).barkProcess(getBarkWord()); だけ切り分ければとおもったけれど
+     * 違う気がする
+     * */
+    @Override
+    protected BarkedSound getBarkProcess() {
         return new ZombieBarkingProcess(this).barkProcess(getBarkWord());
     }
 
