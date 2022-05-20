@@ -59,15 +59,28 @@ public abstract class Animal implements Loudable {
          * あとOverride元と先の両方に.barkProcess(getBarkWord())がくっついていて面倒
          * */
 
+        /*5/20
+         * return new BarkingProcess(this).barkProcess(getBarkWord()); を切り分けた
+         * getBarkProcess() にこの処理を記述
+         * そのまま呼び出すことで挙動は不変
+         * Zombie側でgetBarkProcess()をOverrideすることで、ZombieBarkingProcessを使う
+         *
+         * ↓その後・・・
+         *
+         * BarkingProcessクラス返せばいいだけだった
+         * （ZombieBarkingProcessもBarkingProcessクラス）
+         * newしたあとの処理等々はこっち↓に書けばOK
+         * */
+
         // return new BarkingProcess(this).barkProcess(getBarkWord());
-        return getBarkProcess();
+        return getBarkProcess().barkProcess(getBarkWord());
     }
 
     /*
      * ?????
      * */
-    protected BarkedSound getBarkProcess() {
-        return new BarkingProcess(this).barkProcess(getBarkWord());
+    protected BarkingProcess getBarkProcess() {
+        return new BarkingProcess(this);
     }
 
     //    protected void prepareAbdominalMuscle() {
