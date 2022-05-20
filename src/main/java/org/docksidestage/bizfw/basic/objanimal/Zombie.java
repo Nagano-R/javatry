@@ -70,8 +70,10 @@ public class Zombie extends Animal {
 
     /* ?????? */
     /*
+     * 4/8
      * BarkingProcess(this).barkProcess(getBarkWord()); だけ切り分ければとおもったけれど
      * 違う気がする
+     * HINTはチャレンジのOSのあたり？？？
      * */
     @Override
     protected BarkedSound getBarkProcess() {

@@ -59,7 +59,8 @@ public abstract class Animal implements Loudable {
          * あとOverride元と先の両方に.barkProcess(getBarkWord())がくっついていて面倒
          * */
 
-        return new BarkingProcess(this).barkProcess(getBarkWord());
+        // return new BarkingProcess(this).barkProcess(getBarkWord());
+        return getBarkProcess();
     }
 
     /*
