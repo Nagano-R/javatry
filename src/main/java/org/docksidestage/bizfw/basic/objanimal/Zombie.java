@@ -60,13 +60,14 @@ public class Zombie extends Animal {
     //        zombieDiary.countBreatheIn();
     //    }
 
-    @Override
-    public BarkedSound bark() {
+    //@Override
+    //public BarkedSound bark() {
         // zombieDiary.countBreatheIn(); おもいで ほかに移植した
         //return super.bark(); //いったんコメントアウト
 
-        return new ZombieBarkingProcess(this).barkProcess(getBarkWord());
-    }
+        // return new ZombieBarkingProcess(this).barkProcess(getBarkWord());
+
+    //}
 
     /* ?????? */
     /*
