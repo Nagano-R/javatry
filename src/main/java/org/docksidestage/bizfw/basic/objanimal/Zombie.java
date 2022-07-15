@@ -27,7 +27,7 @@ public class Zombie extends Animal {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final ZombieDiary zombieDiary = new ZombieDiary();
+    public final ZombieDiary zombieDiary = new ZombieDiary();
 
     // ===================================================================================
     //                                                                         Constructor
@@ -105,7 +105,7 @@ public class Zombie extends Animal {
     //                                                                           Hit Point
     //                                                                           =========
     @Override
-    protected void downHitPoint() {
+    public void downHitPoint() {
         // do nothing, infinity hit point
     }
 

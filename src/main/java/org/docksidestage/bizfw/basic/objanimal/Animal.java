@@ -105,7 +105,10 @@ public abstract class Animal implements Loudable {
     // ===================================================================================
     //                                                                           Hit Point
     //                                                                           =========
-    protected void downHitPoint() {
+    // 呼び出し先がbarkingパッケージ配下に入ったため、同一パッケージの関係ではなくなった
+    // protectedだと不可視
+    // publicにした
+    public void downHitPoint() {
         --hitPoint;
         if (hitPoint == 0) {
             throw new IllegalStateException("I'm very tired, so I want to sleep" + getBarkWord());
