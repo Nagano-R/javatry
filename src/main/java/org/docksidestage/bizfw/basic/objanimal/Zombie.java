@@ -15,6 +15,9 @@
  */
 package org.docksidestage.bizfw.basic.objanimal;
 
+import org.docksidestage.bizfw.basic.objanimal.barking.BarkingProcess;
+import org.docksidestage.bizfw.basic.objanimal.barking.ZombieBarkingProcess;
+
 /**
  * The object for zombie(ゾンビ).
  * @author jflute

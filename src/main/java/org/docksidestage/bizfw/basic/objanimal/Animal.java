@@ -15,6 +15,8 @@
  */
 package org.docksidestage.bizfw.basic.objanimal;
 
+import org.docksidestage.bizfw.basic.objanimal.barking.BarkedSound;
+import org.docksidestage.bizfw.basic.objanimal.barking.BarkingProcess;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 
 /**

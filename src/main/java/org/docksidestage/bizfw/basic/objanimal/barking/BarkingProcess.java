@@ -1,5 +1,6 @@
-package org.docksidestage.bizfw.basic.objanimal;
+package org.docksidestage.bizfw.basic.objanimal.barking;
 
+import org.docksidestage.bizfw.basic.objanimal.Animal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
