@@ -75,13 +75,13 @@ public abstract class Animal implements Loudable {
          * */
 
         // return new BarkingProcess(this).barkProcess(getBarkWord());
-        return getBarkProcess().barkProcess(getBarkWord());
+        return createBarkProcess().barkProcess(getBarkWord());
     }
 
     /*
      * ?????
      * */
-    protected BarkingProcess getBarkProcess() {
+    protected BarkingProcess createBarkProcess() { //Factoryメソッド：インスタンスを作るだけのメソッド
         return new BarkingProcess(this);
     }
 
@@ -108,7 +108,18 @@ public abstract class Animal implements Loudable {
     // 呼び出し先がbarkingパッケージ配下に入ったため、同一パッケージの関係ではなくなった
     // protectedだと不可視
     // publicにした
-    public void downHitPoint() {
+    /*
+     * 7/15レビュー
+     * publicはさすがに参照可能範囲がひろすぎてよろしくない
+     * protectedのままで実装できるみたい？
+     * BarkingProcessに持って行くのはhitPoint変数的にむり
+     * ↓
+     * protected：現在のクラスとサブクラスからアクセスできる||現在のクラスと同じパッケージのクラスからアクセスできる
+     * 現在のクラスと同じパッケージ→むり
+     * 現在のクラスとサブクラス→???
+     * AnimalでprotectedでもCatやZombieでpublicにできる(意味ない)
+     * */
+    protected void downHitPoint() {
         --hitPoint;
         if (hitPoint == 0) {
             throw new IllegalStateException("I'm very tired, so I want to sleep" + getBarkWord());

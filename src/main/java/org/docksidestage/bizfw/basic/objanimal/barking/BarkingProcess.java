@@ -85,5 +85,4 @@ public class BarkingProcess {
         animal.downHitPoint();
         return new BarkedSound(barkWord);
     }
-
 }

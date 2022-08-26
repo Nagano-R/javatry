@@ -80,7 +80,7 @@ public class Zombie extends Animal {
      * HINTはチャレンジのOSのあたり？？？
      * */
     @Override
-    protected BarkingProcess getBarkProcess() {
+    protected BarkingProcess createBarkProcess() {
         return new ZombieBarkingProcess(this);
     }
 
@@ -105,7 +105,7 @@ public class Zombie extends Animal {
     //                                                                           Hit Point
     //                                                                           =========
     @Override
-    public void downHitPoint() {
+    protected void downHitPoint() {
         // do nothing, infinity hit point
     }
 
