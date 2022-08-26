@@ -453,13 +453,22 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
          * breatheIn()はAnimalから切り離しときたいが･･･？
          * */
 
-        Zombie zonzon = new Zombie();
+        /*Zombie zonzon = new Zombie();
         zonzon.bark();
         zonzon.bark();
         log(zonzon.getZombieDiary().getBreatheInCount());
-
+        
         Dog wanwan = new Dog();
-        wanwan.bark();
+        wanwan.bark();*/
+
+        Dog shiro = new Dog();
+        System.out.println(shiro.getHitPoint());
+        shiro.bark();
+        System.out.println(shiro.getHitPoint());
+        shiro.bark();
+        shiro.bark();
+        System.out.println(shiro.getHitPoint());
+
     }
 
     /**

@@ -31,6 +31,8 @@ public abstract class Animal implements Loudable {
     //                                                                           =========
     protected int hitPoint;
 
+    protected BarkingProcessDairinin dairinin;
+
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
@@ -82,7 +84,7 @@ public abstract class Animal implements Loudable {
      * ?????
      * */
     protected BarkingProcess createBarkProcess() { //Factoryメソッド：インスタンスを作るだけのメソッド
-        return new BarkingProcess(this);
+        return new BarkingProcess(this, new BarkingProcessDairinin(this));
     }
 
     //    protected void prepareAbdominalMuscle() {
@@ -118,6 +120,11 @@ public abstract class Animal implements Loudable {
      * 現在のクラスと同じパッケージ→むり
      * 現在のクラスとサブクラス→???
      * AnimalでprotectedでもCatやZombieでpublicにできる(意味ない)
+     *
+     * 8/26 途中レビュー
+     * downHitPoint() にアクセスするために、代理人が必要
+     * 代理人は当然downHitPoint()が呼べる必要がある
+     * 同じパッケージor継承関係を使ってAnimalとBarkingProcessをつなげる何かを生み出す（？）
      * */
     protected void downHitPoint() {
         --hitPoint;
