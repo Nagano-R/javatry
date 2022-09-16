@@ -1,7 +1,7 @@
 package org.docksidestage.bizfw.basic.objanimal.barking;
 
 import org.docksidestage.bizfw.basic.objanimal.Animal;
-import org.docksidestage.bizfw.basic.objanimal.BarkingProcessDairinin;
+import org.docksidestage.bizfw.basic.objanimal.AnimalBarkingProcessDairinin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +13,9 @@ public class BarkingProcess {
     private static final Logger logger = LoggerFactory.getLogger(BarkingProcess.class);
 
     protected final Animal animal;
-    protected final BarkingProcessDairinin dairi;
+    protected final AnimalBarkingProcessDairinin dairi;
 
-    public BarkingProcess(Animal animal, BarkingProcessDairinin dairi) {
+    public BarkingProcess(Animal animal, AnimalBarkingProcessDairinin dairi) {
         this.animal = animal;
         this.dairi = dairi;
     }
@@ -44,7 +44,8 @@ public class BarkingProcess {
      * */
     protected void breatheIn() {
         logger.debug("...Breathing in"); // dummy implementation
-        dairi.dhp(); //animal.downHitPoint();
+        //animal.downHitPoint();
+        dairi.dhp();
 
         /*
          * 2022/02/04 レビュー内容
@@ -81,11 +82,11 @@ public class BarkingProcess {
 
     private void prepareAbdominalMuscle() {
         logger.debug("...Using my abdominal muscle"); // dummy implementation
-        dairi.dhp(); //animal.downHitPoint();
+        dairi.dhp();
     }
 
     private BarkedSound doBark(String barkWord) {
-        dairi.dhp(); //animal.downHitPoint();
+        dairi.dhp();
         return new BarkedSound(barkWord);
     }
 }

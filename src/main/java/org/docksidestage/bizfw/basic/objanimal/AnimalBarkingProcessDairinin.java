@@ -1,10 +1,10 @@
 package org.docksidestage.bizfw.basic.objanimal;
 
-public class BarkingProcessDairinin {
+public class AnimalBarkingProcessDairinin {
 
     protected final Animal animal;
 
-    public BarkingProcessDairinin(Animal animal) {
+    public AnimalBarkingProcessDairinin(Animal animal) {
         this.animal = animal;
     }
 

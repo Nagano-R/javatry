@@ -31,7 +31,7 @@ public abstract class Animal implements Loudable {
     //                                                                           =========
     protected int hitPoint;
 
-    protected BarkingProcessDairinin dairinin;
+    protected AnimalBarkingProcessDairinin dairinin;
 
     // ===================================================================================
     //                                                                         Constructor
@@ -84,7 +84,7 @@ public abstract class Animal implements Loudable {
      * ?????
      * */
     protected BarkingProcess createBarkProcess() { //Factoryメソッド：インスタンスを作るだけのメソッド
-        return new BarkingProcess(this, new BarkingProcessDairinin(this));
+        return new BarkingProcess(this, new AnimalBarkingProcessDairinin(this));
     }
 
     //    protected void prepareAbdominalMuscle() {
